@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="search_form">
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Buscar">
+  </form>
+</div>
+
+<div id="results">
+  <ul>
+    {% for result in results %}
+    <li>{{ result.date }} - <a href="{{ result.url }}">Download</a></li>
+    {% empty %}
+    <li>Nenhum resultado encontrado</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
